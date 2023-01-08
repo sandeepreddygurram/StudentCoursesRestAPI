@@ -5,13 +5,13 @@ pipeline {
         stage('vcs') {
             steps {
                 git branch: 'develop',
-                    url: 'https://github.com/DevProjectsForDevOps/StudentCoursesRestAPI.git'
+                    url: 'https://github.com/srikanth458/StudentCoursesRestAPI.git'
             }
         }
         stage('build and deploy') {
             steps {
-                sh "docker image build -t shaikkhajaibrahim/courses:develop-$env.BUILD_ID ."
-                sh "docker image push shaikkhajaibrahim/courses:develop-$env.BUILD_ID"
+                sh "docker image build -t srikanth458/courses:develop-$env.BUILD_ID ."
+                sh "docker image push srikanth458/courses:develop-$env.BUILD_ID"
             }
         }
         stage('deploy') {
