@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'NODE1' }
+    agent { label 'k8s' }
     triggers { pollSCM('* * * * *') }
     stages {
         stage('vcs') {
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh "cd deployments/courses/overlays/develop && kustomize edit set image courses=shaikkhajaibrahim/courses:develop-$env.BUILD_ID"
+                sh "cd deployments/courses/overlays/develop && kustomize edit set image courses=srikanth458/courses:develop-$env.BUILD_ID"
                 sh 'kubectl apply -k deployments/courses/overlays/develop'
             }
         }
