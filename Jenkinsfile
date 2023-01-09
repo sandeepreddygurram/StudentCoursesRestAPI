@@ -15,7 +15,7 @@ pipeline {
             }
         }
         stage('deploy') {
-            agent {label 'MASTER'}
+            agent {label 'k8s'}
             steps {
                 sh 'kubectl apply -f deploy.yaml'
                 sh 'kubectl apply -f rs.yaml'
