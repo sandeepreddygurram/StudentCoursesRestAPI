@@ -1,22 +1,11 @@
-apiVersion: apps/v1
-kind: ReplicaSet
-metadata: 
-  name: nginx-rs
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
 spec:
-  minReadySeconds: 10
-  replicas: 2
+  type: ClusterIP
   selector:
-    matchLabels:
-      app:nginx  
-  template:
-    spec:
-      initContainers:
-        - image: alpine
-          name: ping
-          command: ["ping","-c","4","google.com"]
-      containers:
-        - image: nginx
-          name: nginx-cont
-          ports:
-            - containerPort: 80
-              protocol: TCP
+    app: nginx
+  ports:
+    - targetPort: 80
+      port: 35000
