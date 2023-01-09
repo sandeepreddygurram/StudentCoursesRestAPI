@@ -14,12 +14,7 @@ pipeline {
                 sh 'docker image push srikanth458/courses'
             }
         }
-        stage('deploy') {
-            steps {
-                sh "cd deployments/courses/overlays/develop && kustomize edit set image courses=srikanth458/courses:develop-$env.BUILD_ID"
-                sh 'kubectl apply -k deployments/courses/overlays/develop'
-            }
-        }
+        
 
     }
 }
