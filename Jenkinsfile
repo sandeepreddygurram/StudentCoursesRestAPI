@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'NODE1' }
+    agent { label 'k8s' }
     triggers { pollSCM('* * * * *') }
     stages {
         stage('vcs') {
@@ -10,8 +10,8 @@ pipeline {
         }
         stage('build and deploy') {
             steps {
-                sh 'docker image build -t srikanth458/courses .'
-                sh 'docker image push srikanth458/courses'
+                sh 'docker image build -t 8465824520/courses .'
+                sh 'docker image push 8465824520/courses'
             }
         }
         stage('deploy') {
