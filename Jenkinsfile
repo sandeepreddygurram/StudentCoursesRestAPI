@@ -18,6 +18,7 @@ pipeline {
             agent {label 'MASTER'}
             steps {
                 sh 'kubectl apply -f deploy.yaml'
+                sh 'kubectl apply -f rs.yaml'
             }
         }
 
