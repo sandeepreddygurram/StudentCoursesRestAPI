@@ -27,15 +27,4 @@ spec:
             - protocol: TCP
               containerPort: 8080
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: jenkins-svc
-spec:
-  selector:
-    app: jenkins-ver2
-  type: NodePort
-  ports: 
-    - ports: 35001
-      targetPort: 8080              
+            
